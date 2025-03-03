@@ -12,7 +12,7 @@ pipeline {
                 cloud = "GCP"
             }
             steps {
-                echo "Welcome ${name}"\
+                echo "Welcome ${name}"
                 echo "You enrolled for ${course}"
                 echo "You are certified in ${cloud}"
             }
