@@ -1,25 +1,26 @@
 pipeline {
-    agent any 
+    agent any
+    // Global env section, can be used by all stages
+    environment {
+        course = "Docker and K8S"
+        name = "Siva"
+    }
     stages {
         stage ('Build') {
-            steps {
-                echo "********** Building the application *******************"
+            // this is specifc to this stage, and cant be used by others
+            environment {
+                cloud = "GCP"
             }
-        }
-        stage ('Sonar') {
             steps {
-                echo "******************* Scanning the application ****************"
-            }
-        }
-        stage ('Docker') {
-            steps {
-                echo "***************Building the docker image *************************"
-            }
-        }
-        stage ('K8SDeploy') {
-            steps {
-                echo "******************* Deploying using k8s *************************"
+                echo "Welcome ${name}"\
+                echo "You enrolled for ${course}"
+                echo "You are certified in ${cloud}"
             }
         }
     }
 }
+
+
+// ${name}
+// ${env.name}
+// ${params.name}
