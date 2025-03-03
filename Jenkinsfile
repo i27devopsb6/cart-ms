@@ -10,14 +10,8 @@ pipeline {
             // this is specifc to this stage, and cant be used by others
             environment {
                 cloud = "GCP"
+                name  = "Poojitha"
             }
-            steps {
-                echo "Welcome ${name}"
-                echo "You enrolled for ${course}"
-                echo "You are certified in ${cloud}"
-            }
-        }
-        stage ('SecondStage') {
             steps {
                 echo "Welcome ${name}"
                 echo "You enrolled for ${course}"
