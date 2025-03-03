@@ -17,10 +17,12 @@ pipeline {
                 echo "You are certified in ${cloud}"
             }
         }
+        stage ('SecondStage') {
+            steps {
+                echo "Welcome ${name}"
+                echo "You enrolled for ${course}"
+                echo "You are certified in ${cloud}"
+            }
+        }
     }
 }
-
-
-// ${name}
-// ${env.name}
-// ${params.name}
