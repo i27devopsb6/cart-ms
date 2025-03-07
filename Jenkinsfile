@@ -29,7 +29,7 @@ pipeline {
             choices: 'yes\no',
             description: "This will only run the code analysis"
         )
-
+    }
     stages {
         stage ('Build') {
             when {
@@ -117,6 +117,5 @@ pipeline {
                 echo "Deploying to prod environment"
             }
         }
-    }
     }
 }
