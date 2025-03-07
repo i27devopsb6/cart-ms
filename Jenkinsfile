@@ -2,31 +2,31 @@ pipeline {
     agent any 
     parameters {
         choice(name: 'buildOnly',
-            choices: 'no\yes',
+            choices: 'no\nyes',
             description: "This will only build the application"
         )
         choice(name: 'dockerPush',
-            choices: 'no\yes',
+            choices: 'no\nyes',
             description: "This will build and push to docker repo"
         )
         choice(name: 'deployToDev',
-            choices: 'no\yes',
+            choices: 'no\nyes',
             description: "This will deploy the app to dev env"
         )
         choice(name: 'deployToTest',
-            choices: 'no\yes',
+            choices: 'no\nyes',
             description: "This will deploy the app to test env"
         )
         choice(name: 'deployToStage',
-            choices: 'no\yes',
+            choices: 'no\nyes',
             description: "This will deploy the app to stage env"
         )
         choice(name: 'deployToProd',
-            choices: 'no\yes',
+            choices: 'no\nyes',
             description: "This will deploy the app to prod env"
         )   
         choice(name: 'scanOnly',
-            choices: 'no\yes',
+            choices: 'no\nyes',
             description: "This will only run the code analysis"
         )
     }
