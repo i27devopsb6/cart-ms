@@ -25,7 +25,7 @@ pipeline {
             choices: 'yes\no',
             description: "This will deploy the app to prod env"
         )   
-        choice(name: scanOnly,
+        choice(name: 'scanOnly',
             choices: 'yes\no',
             description: "This will only run the code analysis"
         )
