@@ -1,49 +1,24 @@
-// pipleine e2e
 pipeline {
-    agent any
+    agent any 
+    parameters {
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+
+        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+
+        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+
+        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+
+        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
+    }
     stages {
-        stage ('Build') {
+        stage ('Example') {
             steps {
-                echo "Building the project"
-            }
-        }
-        stage ('CodeAnalysis') {
-            steps {
-                echo "Running code analysis"
-            }
-        }   
-        stage ('DockerBuildnPush') {
-            steps {
-                echo "Building and pushing docker image"
-            }
-        }
-        stage ('DeployToDev') {
-            steps {
-                echo "Deploying to dev environment"
-            }
-        }
-        stage ('DeployToTest') {
-            steps {
-                echo "Deploying to test environment"
-            }
-        }
-        stage ('DeployToStage') {
-            when {
-                branch 'release-*'
-            }
-            steps {
-                echo "Deploying to stage environment"
-            }
-        }
-        stage ('DeployToProd') {
-            when {
-                // vx.x.x
-                // v1.2.3 is correct
-                // v.1.2.3 is wrong
-                tag pattern: "v\\d{1,2}.\\d{1,2}.\\d{1,2}" , comparator: "REGEXP"
-            }
-            steps {
-                echo "Deploying to prod environment"
+                echo "Hello ${params.PERSON}"
+                echo "Biography: ${params.BIOGRAPHY}"
+                echo "Toogle: ${params.TOGGLE}"
+                echo "Selected Choice is: ${params.CHOICE}"
+                echo "Password entered is: ${params.PASSWORD}"
             }
         }
     }
