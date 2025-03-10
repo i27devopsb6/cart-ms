@@ -1,20 +1,17 @@
-pipeline {
+// Send a mail based on the status of the job 
+
+pipleline {
     agent any 
     stages {
-        stage ("DeployToDev") {
+        stage ('Build') {
             steps {
-                echo "Deploying to Dev environment"
+                echo "Testing Mail Post job"
             }
         }
-        stage ("DeployToProd") {
-            when {
-                // branch condition
-                expression { BRANCH_NAME ==~ /(production|staging)/}
-            }
-            steps {
-
-                echo "Deploying to prod environment "
-            }
+    }
+    post {
+        success {
+            mail bcc: '', body: 'Build is Success', cc: '', from: '', replyTo: '', subject: 'Jenkins Job Status', to: 'i27k8s10@gmail.com'
         }
     }
 }
